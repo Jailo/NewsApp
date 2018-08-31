@@ -10,16 +10,17 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class articlesAdapter extends ArrayAdapter {
+public class articlesAdapter extends ArrayAdapter<Article> {
 
     // the context
     private Context mContext;
 
     /** List of articles */
-    private ArrayList<Article> mArticles;
+    private List<Article> mArticles;
 
-    public articlesAdapter(@NonNull Context context, int resource, ArrayList<Article> articlesList) {
+    public articlesAdapter(@NonNull Context context, int resource, List<Article> articlesList) {
         super(context, resource, articlesList);
         mContext = context;
         mArticles = articlesList;
@@ -40,7 +41,7 @@ public class articlesAdapter extends ArrayAdapter {
         }
 
         // Get current article at the current position
-        Article currentArticle = mArticles.get(position);
+        Article currentArticle = (Article) getItem(position);
 
         // Find resource for titleTextView and set the current article's title as its text
         TextView titleTextView = (TextView) listItem.findViewById(R.id.title_text_view);
