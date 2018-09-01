@@ -18,4 +18,11 @@
         android:layout_centerInParent="true"
         android:text="That's funny... nothing came up"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:id="@+id/progress_bar"/>
+
 </RelativeLayout>
