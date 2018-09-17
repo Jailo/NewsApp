@@ -19,6 +19,8 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<List<Article>> {
 
+    public String QUERY_URL = "https://content.guardianapis.com/search?section=travel&show-fields=all&show-references=author&api-key=fa50b045-3c1b-4a1d-b7bf-d98814e513f3";
+
     private String LOG_TAG = MainActivity.class.getSimpleName();
 
     private articlesAdapter mAdapter;
@@ -67,7 +69,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     @Override
     public Loader<List<Article>> onCreateLoader(int id, Bundle args) {
         Log.v(LOG_TAG, "On create loader has been called");
-        return new ArticlesLoader(this);
+        return new ArticlesLoader(this, QUERY_URL);
     }
 
     @Override
