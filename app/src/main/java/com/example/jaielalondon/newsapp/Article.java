@@ -4,8 +4,16 @@ public class Article {
     /** Title of the article */
     private String mTitle;
 
-    public Article(String title) {
+    /**
+     * Url string of the article
+     */
+    private String mUrl;
+
+
+    public Article(String title, String url) {
+
         mTitle = title;
+        mUrl = url;
     }
 
     /**
@@ -14,6 +22,13 @@ public class Article {
      */
     public String getTitle() {
         return mTitle;
+    }
+
+    /**
+     * @return the articles url string
+     */
+    public String getUrl() {
+        return mUrl;
     }
 }
 

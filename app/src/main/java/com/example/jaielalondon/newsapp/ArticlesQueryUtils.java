@@ -141,11 +141,17 @@ public class ArticlesQueryUtils {
             // Loop through every article object in the array
             for (int i = 0; i < articlesArray.length(); i++) {
 
+                // get current article at the current index
                 JSONObject currentArticle = articlesArray.getJSONObject(i);
 
+                // Get the articles title
                 String title = currentArticle.getString("webTitle");
 
-                articles.add(new Article(title));
+                // Get the articles webUrl
+                String url = currentArticle.getString("webUrl");
+
+                // Create a new article and add it to the list
+                articles.add(new Article(title, url));
             }
 
 
@@ -154,6 +160,7 @@ public class ArticlesQueryUtils {
             Log.v(LOG_TAG, "Error parsing json:" + e);
         }
 
+        // Return list of articles
         return articles;
 
     }
@@ -177,8 +184,5 @@ public class ArticlesQueryUtils {
         return stringBuilder.toString();
     }
 
-    // parse through the json to get the article titles
-
-    // create a list of articles and return it.
 }
 
