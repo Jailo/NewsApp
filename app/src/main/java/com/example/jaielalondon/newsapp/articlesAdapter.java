@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -48,6 +49,30 @@ public class articlesAdapter extends ArrayAdapter<Article> {
         // Find resource for titleTextView and set the current article's title as its text
         TextView titleTextView = (TextView) listItem.findViewById(R.id.title_text_view);
         titleTextView.setText(currentArticle.getTitle());
+
+        // Find resource for section_text_view and set the current article's section as its text
+        TextView sectionTextView = (TextView) listItem.findViewById(R.id.section_text_view);
+        sectionTextView.setText(currentArticle.getSection());
+
+        // Find resource for date_text_view and set the current article's datePublished as its text
+        TextView dateTextView = (TextView) listItem.findViewById(R.id.date_text_view);
+        dateTextView.setText(currentArticle.getDatePublished().substring(0, 10));
+
+        // Find resource for author_text_view
+        TextView authorTextView = (TextView) listItem.findViewById(R.id.author_text_view);
+
+        // if the curent articles auther is not an empty string
+        // set the current article's author as its text
+        if (!currentArticle.getAuthor().equals("")) {
+            authorTextView.setText(currentArticle.getAuthor());
+        } else {
+            // set author text view visibility to be gone
+            authorTextView.setVisibility(View.GONE);
+        }
+
+        // Find resource for image view and set the current article's image as its text
+        ImageView imageView = (ImageView) listItem.findViewById(R.id.image);
+        imageView.setImageBitmap(currentArticle.getPicture());
 
         listItem.setOnClickListener(new View.OnClickListener() {
             @Override

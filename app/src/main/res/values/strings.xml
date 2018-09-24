@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">NewsApp</string>
+    <string name="no_items_in_list_error">That\'s funny&#8230; nothing came up</string>
+    <string name="image_content_description">Article Image</string>
 </resources>

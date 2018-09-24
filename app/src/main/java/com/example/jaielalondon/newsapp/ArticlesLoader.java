@@ -2,6 +2,7 @@ package com.example.jaielalondon.newsapp;
 
 import android.content.AsyncTaskLoader;
 import android.content.Context;
+import android.graphics.Bitmap;
 
 import java.net.MalformedURLException;
 import java.util.ArrayList;

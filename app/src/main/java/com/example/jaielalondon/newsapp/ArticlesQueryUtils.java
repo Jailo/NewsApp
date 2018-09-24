@@ -1,5 +1,8 @@
 package com.example.jaielalondon.newsapp;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.media.Image;
 import android.text.TextUtils;
 import android.util.Log;
 
@@ -144,14 +147,31 @@ public class ArticlesQueryUtils {
                 // get current article at the current index
                 JSONObject currentArticle = articlesArray.getJSONObject(i);
 
+                // Get the object that contains all fields of info on the currentArticle
+                JSONObject feilds = currentArticle.getJSONObject("fields");
+
                 // Get the articles title
-                String title = currentArticle.getString("webTitle");
+                String title = feilds.getString("headline");
 
                 // Get the articles webUrl
                 String url = currentArticle.getString("webUrl");
 
+                // Get the articles picture
+                String image = feilds.getString("thumbnail");
+
+                Bitmap picture = readImageUrl(image);
+
+                // Get Authors name
+                String author = feilds.optString("byline");
+
+                // Get the date the article was published
+                String datePublished = feilds.getString("firstPublicationDate");
+
+                // Get the articles section name
+                String section = currentArticle.getString("pillarName");
+
                 // Create a new article and add it to the list
-                articles.add(new Article(title, url));
+                articles.add(new Article(title, url, author, image, datePublished, section, picture));
             }
 
 
@@ -182,6 +202,22 @@ public class ArticlesQueryUtils {
         }
 
         return stringBuilder.toString();
+    }
+
+    private static Bitmap readImageUrl(String urlString) {
+
+        Bitmap image = null;
+
+        try {
+            InputStream in = new java.net.URL(urlString).openStream();
+            image = BitmapFactory.decodeStream(in);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            Log.v(LOG_TAG, "Error reading image url: " + e);
+        }
+
+        return image;
     }
 
 }
