@@ -44,8 +44,10 @@ public class Article {
      * @param title         the articles title
      * @param url           Url string of the article
      * @param pictureUrl    Picture Url string of the article
+     * @param picture       Bitmap Picture image of the article
      * @param author        author of the article
      * @param datePublished date the article was published
+     * @param section       the category to which the article belongs (I.e "Politics")
      */
     public Article(String title, String url, String author, String pictureUrl,
                    String datePublished, String section, Bitmap picture) {
@@ -57,24 +59,6 @@ public class Article {
         mDatePublished = datePublished;
         mSection = section;
         mPicture = picture;
-    }
-
-
-    /**
-     * basic Article object
-     * used only when an articles does not have info on its author or date published
-     *
-     * @param title      the articles title
-     * @param url        Url string of the article
-     * @param pictureUrl Picture Url string of the article
-     */
-    public Article(String title, String url, String pictureUrl, String section) {
-
-        mTitle = title;
-        mWebUrl = url;
-        mPictureUrl = pictureUrl;
-        mSection = section;
-
     }
 
 

@@ -25,9 +25,11 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
     private articlesAdapter mAdapter;
 
-    private ArrayList<Article> articles;
-
     private ProgressBar progressBar;
+
+    private ListView listView;
+
+    private TextView errorTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,32 +37,34 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         setContentView(R.layout.activity_main);
 
         // Find resource for list view
-        ListView listView = findViewById(R.id.listView);
+        listView = findViewById(R.id.listView);
 
         // Find Resource for error text view and set it to display whenever the list view is empty
-        TextView errorTextView = findViewById(R.id.error_text_view);
-        listView.setEmptyView(errorTextView);
+        errorTextView = findViewById(R.id.error_text_view);
 
         // Create and set adapter on listView
         mAdapter = new articlesAdapter(this,0, new ArrayList<Article>());
         listView.setAdapter(mAdapter);
 
+        // Find progress bar spinner resource
         progressBar = findViewById(R.id.progress_bar);
 
+        // Get connectivity manager
         ConnectivityManager connectivityManager = (ConnectivityManager) getBaseContext()
                 .getSystemService(Context.CONNECTIVITY_SERVICE);
+        // get active network from the connectivity manager
         NetworkInfo activeNetwork = connectivityManager.getActiveNetworkInfo();
+        // create a bool that checks if active network is connected or connecting (to the internet)
         Boolean isConnected = activeNetwork != null && activeNetwork.isConnectedOrConnecting();
 
         // If connected to internet, initiate the loader to start loading the articles
         if(isConnected){
-
             LoaderManager loaderManager = getLoaderManager();
             loaderManager.initLoader(0, null, this).forceLoad();
         } else {
-
+            // If not, set the progress bar spinner to be GONE and set the error text view text
             progressBar.setVisibility(View.GONE);
-            errorTextView.setText("Not connected to the internet,\nplease re-connect and try again");
+            errorTextView.setText(R.string.internet_connection_error);
         }
 
 
@@ -81,6 +85,8 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
         if (articles != null && !articles.isEmpty()) {
             mAdapter.addAll(articles);
+        } else {
+            listView.setEmptyView(errorTextView);
         }
     }
 
