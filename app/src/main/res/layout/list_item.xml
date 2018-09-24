@@ -10,7 +10,7 @@
     <ImageView
         android:id="@+id/image"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="140dp"
         android:contentDescription="@string/image_content_description"
         android:scaleType="centerCrop" />
 
@@ -19,12 +19,11 @@
         android:layout_height="wrap_content"
         android:id="@+id/section_text_view"
         android:layout_below="@id/image"
-        android:layout_margin="4dp"
-        android:background="@color/colorPrimaryDark"
-        android:padding="5dp"
-        android:textColor="@android:color/white"
-        android:textSize="18sp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="sans-serif-condensed"
+        android:textAllCaps="true"
         android:textStyle="bold"
+        android:textSize="14sp"
         tools:text="section" />
 
     <TextView
@@ -33,9 +32,9 @@
         android:layout_height="wrap_content"
         android:textSize="24sp"
         android:layout_below="@id/section_text_view"
-        android:layout_marginStart="8dp"
         android:layout_marginTop="4dp"
         android:textStyle="bold"
+        android:fontFamily="serif"
         tools:text="Title" />
 
     <TextView
@@ -43,8 +42,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/title_text_view"
-        android:layout_margin="8dp"
-        android:textSize="18sp"
+        android:layout_marginTop="4dp"
+        android:fontFamily="serif"
+        android:textSize="16sp"
         tools:text="Author" />
 
     <TextView
@@ -53,8 +53,9 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_below="@id/image"
-        android:layout_margin="8dp"
+        android:layout_marginTop="8dp"
         android:textSize="14sp"
+        android:fontFamily="serif"
         tools:text="Date published" />
 
 </RelativeLayout>

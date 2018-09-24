@@ -80,12 +80,17 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     public void onLoadFinished(Loader<List<Article>> loader, List<Article> articles) {
         Log.v(LOG_TAG, "On load finished has been called");
 
+        // Set progress spinners visibility to GONE
         progressBar.setVisibility(View.GONE);
+        // Clear the adapter to prepare for the new list
         mAdapter.clear();
 
+        // Check if articles is NOT null or empty
         if (articles != null && !articles.isEmpty()) {
+            // add all articles to be displayed in the adapter
             mAdapter.addAll(articles);
         } else {
+            // if article list IS empty, display an error text view
             listView.setEmptyView(errorTextView);
         }
     }
