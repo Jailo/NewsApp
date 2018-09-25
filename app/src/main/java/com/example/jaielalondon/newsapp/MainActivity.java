@@ -19,8 +19,8 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<List<Article>> {
 
-    public String QUERY_URL = "https://content.guardianapis.com/search?section=travel&show-fields=all&show-references=author&api-key=fa50b045-3c1b-4a1d-b7bf-d98814e513f3";
-
+    public String QUERY_URL = "https://content.guardianapis.com/search?q=careers,food,fashion,travel,books,art,film,business,tech,world,us,money&show-fields=all&show-references=author&page-size=25&order-by=newest&api-key=fa50b045-3c1b-4a1d-b7bf-d98814e513f3";
+    // Log tag
     private String LOG_TAG = MainActivity.class.getSimpleName();
 
     private articlesAdapter mAdapter;

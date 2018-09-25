@@ -193,7 +193,7 @@ public class ArticlesQueryUtils {
                 String datePublished = feilds.getString("firstPublicationDate");
 
                 // Get the articles section name
-                String section = currentArticle.getString("pillarName");
+                String section = currentArticle.getString("sectionName");
 
                 // Create a new article and add it to the list
                 articles.add(new Article(title, url, author, image, datePublished, section, picture));
